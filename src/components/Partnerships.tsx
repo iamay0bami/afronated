@@ -108,10 +108,10 @@ export function Partnerships() {
               For partnership inquiries and media kit
             </p>
             <a
-              href="mailto:partnerships@afronated.com"
+              href="mailto:afronated@gmail.com"
               className="inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-black hover:text-[#EF4444] transition-colors group"
             >
-              partnerships@afronated.com
+              afronated@gmail.com
               <span className="w-8 h-[1px] bg-black group-hover:bg-[#EF4444] group-hover:w-12 transition-all" />
             </a>
           </motion.div>
