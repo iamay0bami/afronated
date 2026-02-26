@@ -98,9 +98,9 @@ export function Footer() {
               </div>
 
               <div className="mt-8 space-y-2">
-                <a href="mailto:hello@afronated.com"
+                <a href="mailto:afronated@gmail.com"
                   className="block text-[13px] text-white/50 hover:text-[#EF4444] transition-colors">
-                  hello@afronated.com
+                  afronated@gmail.com
                 </a>
               </div>
             </motion.div>

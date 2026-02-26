@@ -87,7 +87,7 @@ export function Team() {
             Want to join our collective?
           </p>
           <a
-            href="mailto:hello@afronated.com"
+            href="mailto:afronated@gmail.com"
             className="inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-white hover:text-[#EF4444] transition-colors group"
           >
             Get in Touch

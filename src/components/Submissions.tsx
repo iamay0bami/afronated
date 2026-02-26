@@ -63,8 +63,7 @@ export function Submissions() {
 
               <div className="space-y-6">
                 <p className="text-[14px] leading-relaxed text-black/70">
-                  Whether you're a musician, visual artist, filmmaker, or creative in any lane —
-                  we want to spotlight your story. Drop your info and let's connect.
+                  Have a story to tell? Know a creative we should feature? Want to collaborate? We'd love to hear from you.
                 </p>
                 <div className="space-y-4">
                   {[
@@ -153,13 +152,10 @@ export function Submissions() {
                     className={inputClass}
                   >
                     <option value="">Select...</option>
-                    <option value="musician">Musician / Producer</option>
-                    <option value="visual">Visual Artist / Photographer</option>
-                    <option value="filmmaker">Filmmaker / Content Creator</option>
-                    <option value="writer">Writer / Journalist</option>
-                    <option value="interview">Interview Request</option>
-                    <option value="collab">Collaboration Idea</option>
-                    <option value="other">Other</option>
+                    <option value="musician">Submit my story</option>
+                    <option value="visual">Recommend someone to feature</option>
+                    <option value="filmmaker">Collaborate with Afro-Nated</option>
+                    <option value="writer">Something else</option>
                   </select>
                 </div>
                 <div className="col-span-2 sm:col-span-1 space-y-2">
