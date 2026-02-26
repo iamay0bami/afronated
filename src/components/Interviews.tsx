@@ -5,23 +5,23 @@ import { useRef } from "react";
 const interviews = [
   {
     id: 1,
-    title: "Rising Voices in Hip-Hop",
-    guest: "Artist Spotlight",
-    videoId: "dQw4w9WgXcQ", // Replace with actual YouTube video IDs
+    title: "Behind the Creative: An Interview with an Artist",
+    guest: "Psamuel",
+    videoId: "YnsnAwQaZhM", // Replace with actual YouTube video IDs
     description: "An intimate conversation about creative process and cultural identity.",
   },
   {
     id: 2,
-    title: "The Art of Storytelling",
-    guest: "Visual Creator",
-    videoId: "dQw4w9WgXcQ",
+    title: "Behind the Creative: An interview with Visual Creator",
+    guest: "Halimah Agbaje",
+    videoId: "zHtjLi-8_sc",
     description: "Exploring narrative through visual media and community engagement.",
   },
   {
     id: 3,
-    title: "Music as Movement",
-    guest: "Producer Series",
-    videoId: "dQw4w9WgXcQ",
+    title: "Behind the Creative: An interview with an Artist",
+    guest: "Lasko Blark",
+    videoId: "jf2N-WFeEGQ",
     description: "Behind the beats with emerging producers shaping the sound.",
   },
 ];
