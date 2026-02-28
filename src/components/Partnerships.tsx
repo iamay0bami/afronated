@@ -38,11 +38,11 @@ export function Partnerships() {
     "w-full bg-transparent border-b-2 border-black/20 focus:border-[#EF4444] outline-none py-3 text-[14px] transition-colors placeholder:text-black/30";
 
   return (
-    <section ref={ref} id="partnerships" className="py-32 bg-white">
-      <div className="container mx-auto px-6">
+    <section ref={ref} id="partnerships" className="afro-partnerships-section">
+      <div className="afro-partnerships-container">
         <div className="max-w-4xl mx-auto">
 
-          {/* Header — centred, exactly as Figma */}
+          {/* ── Header ── */}
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,10 @@ export function Partnerships() {
                 Work With Us
               </span>
             </div>
-            <h2 className="text-[clamp(2rem,6vw,4rem)] leading-[0.95] tracking-tight text-black mb-8">
+            <h2
+              className="text-[clamp(2rem,6vw,4rem)] leading-[0.95] tracking-tight text-black mb-8"
+              style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+            >
               Partnerships &<br />Sponsorships
             </h2>
             <p className="text-[14px] leading-relaxed text-black/60 max-w-2xl mx-auto">
@@ -64,7 +67,7 @@ export function Partnerships() {
             </p>
           </motion.div>
 
-          {/* 2-col grid — exactly as Figma */}
+          {/* ── Partnership types grid ── */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -97,14 +100,14 @@ export function Partnerships() {
             ))}
           </motion.div>
 
-          {/* Contact CTA — exactly as Figma */}
+          {/* Contact CTA — with extra breathing room  */}
           <motion.div
-            className="text-center pt-12 border-t border-black/10"
+            className="afro-partnerships-cta"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <p className="text-[13px] text-black/50 mb-6">
+            <p className="text-[13px] text-black/50 mb-5">
               For partnership inquiries and media kit
             </p>
             <a
@@ -116,20 +119,27 @@ export function Partnerships() {
             </a>
           </motion.div>
 
-          {/* Inquiry form — added below, doesn't break Figma layout */}
+          {/*  Inquiry form — visually separated with bold header  */}
           <motion.div
-            className="mt-24 pt-16 border-t border-black/10"
+            className="afro-partnerships-form-wrapper"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="mb-10">
-              <h3 className="text-[clamp(1.5rem,3vw,2rem)] tracking-tight text-black mb-2">
-                Send an Inquiry
-              </h3>
-              <p className="text-[13px] text-black/50">
-                Tell us about your brand or project and we'll follow up with our media kit.
-              </p>
+            {/* Divider + heading — clear visual break from the contact block above */}
+            <div className="afro-partnerships-form-header">
+              <div className="afro-partnerships-divider" />
+              <div className="afro-partnerships-form-title-row">
+                <h3
+                  className="afro-partnerships-form-title"
+                  style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+                >
+                  Send an Inquiry
+                </h3>
+                <p className="text-[13px] text-black/50 mt-2">
+                  Tell us about your brand or project and we'll follow up with our media kit.
+                </p>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-8">
@@ -184,6 +194,94 @@ export function Partnerships() {
 
         </div>
       </div>
+
+      <style>{`
+        /*  Section padding  */
+        .afro-partnerships-section {
+          padding-top: 80px;
+          padding-bottom: 80px;
+          background: #fff;
+        }
+        @media (min-width: 1024px) {
+          .afro-partnerships-section {
+            padding-top: 120px;
+            padding-bottom: 120px;
+          }
+        }
+
+        /*  Container — matches Hero / Manifesto / Interviews / Submissions  */
+        .afro-partnerships-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-partnerships-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .afro-partnerships-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+
+        /*  Contact CTA block: generous padding above and below  */
+        .afro-partnerships-cta {
+          text-align: center;
+          padding-top: 3.5rem;
+          padding-bottom: 3.5rem;
+          border-top: 1px solid rgba(0,0,0,0.08);
+          border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        @media (min-width: 1024px) {
+          .afro-partnerships-cta {
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+          }
+        }
+
+        /*  Inquiry form wrapper — clear visual separation  */
+        .afro-partnerships-form-wrapper {
+          margin-top: 5rem;
+        }
+        @media (min-width: 1024px) {
+          .afro-partnerships-form-wrapper {
+            margin-top: 6rem;
+          }
+        }
+
+        /*  Form header: accent bar + big Bebas title  */
+        .afro-partnerships-form-header {
+          margin-bottom: 3rem;
+        }
+
+        /* Red accent bar — thin, full-width, strong visual anchor */
+        .afro-partnerships-divider {
+          width: 100%;
+          height: 2px;
+          background: #EF4444;
+          margin-bottom: 2rem;
+        }
+
+        .afro-partnerships-form-title-row {
+          /* left-aligned, distinct from centred body copy above */
+        }
+
+        .afro-partnerships-form-title {
+          /* Large Bebas Neue title — hard to miss */
+          font-size: clamp(2rem, 5vw, 3rem);
+          line-height: 1;
+          letter-spacing: 0.02em;
+          color: #000;
+          margin-bottom: 0;
+        }
+      `}</style>
     </section>
   );
 }
