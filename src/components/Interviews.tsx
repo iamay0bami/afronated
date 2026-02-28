@@ -36,7 +36,8 @@ export function Interviews() {
 
   return (
     <section id="interviews" ref={ref} className="py-20 sm:py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
+      {/* Central container */}
+      <div className="afro-interviews-container">
 
         <motion.div
           className="mb-16 sm:mb-20"
@@ -72,7 +73,7 @@ export function Interviews() {
               transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
-              {/* Thumbnail — click opens YouTube */}
+              {/* Thumbnail */}
               <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <a
                   href={interview.watchUrl}
@@ -128,16 +129,37 @@ export function Interviews() {
             </motion.div>
           ))}
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 mt-20 sm:mt-32">
         <motion.div
-          className="h-[2px] bg-[#EF4444]"
+          className="h-[2px] bg-[#EF4444] mt-20 sm:mt-32"
           initial={{ width: 0 }}
           animate={isInView ? { width: "100%" } : {}}
           transition={{ delay: 0.8, duration: 1.2 }}
         />
       </div>
+
+      <style>{`
+        .afro-interviews-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @media (min-width: 1024px) {
+          .afro-interviews-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-interviews-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -3,12 +3,13 @@ import { motion } from "motion/react";
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
-      <div className="container mx-auto px-4 sm:px-6 py-24 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* Central container — max 1200px, full-width on mobile */}
+      <div className="afro-container" style={{ paddingTop: "6rem", paddingBottom: "5rem" }}>
+        <div className="afro-hero-grid">
 
-          {/* Left side */}
+          {/* Left — text content */}
           <motion.div
-            className="lg:col-span-7"
+            className="afro-hero-text"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -75,19 +76,31 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right side image — hidden on mobile */}
+          {/* Right — image, hidden on mobile */}
           <motion.div
-            className="hidden lg:block lg:col-span-5"
+            className="afro-hero-image-wrap"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="relative">
-              <div className="absolute -top-8 -left-8 w-full h-full border-2 border-[#EF4444] z-0" />
+              {/* Red offset border */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-1.5rem",
+                  left: "-1.5rem",
+                  right: "1.5rem",
+                  bottom: "-1.5rem",
+                  border: "2px solid #EF4444",
+                  zIndex: 0,
+                }}
+              />
               <img
                 src="https://images.unsplash.com/photo-1764069415077-a5af441778d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMGN1bHR1cmUlMjB1cmJhbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2OTUyODExMHww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Youth culture"
-                className="relative z-10 w-full h-[500px] object-cover grayscale"
+                className="relative z-10 w-full object-cover grayscale"
+                style={{ height: "420px" }}
               />
             </div>
           </motion.div>
@@ -101,6 +114,56 @@ export function Hero() {
         animate={{ width: "30%" }}
         transition={{ delay: 1, duration: 1 }}
       />
+
+      <style>{`
+        /* ── Shared content container ── */
+        .afro-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        /* ── Hero grid: stacked on mobile, side-by-side on desktop ── */
+        .afro-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          align-items: center;
+        }
+        .afro-hero-text {
+          /* full width on mobile */
+        }
+        /* Image hidden on mobile */
+        .afro-hero-image-wrap {
+          display: none;
+        }
+
+        /* ── Desktop (1024px+): max-width container + side-by-side layout ── */
+        @media (min-width: 1024px) {
+          .afro-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+          .afro-hero-grid {
+            grid-template-columns: 7fr 5fr;
+            gap: 3rem;
+          }
+          .afro-hero-image-wrap {
+            display: block;
+          }
+        }
+
+        /* Tablet (768px): slightly wider padding, still single column */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

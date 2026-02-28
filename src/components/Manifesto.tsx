@@ -8,7 +8,8 @@ export function Manifesto() {
 
   return (
     <section ref={ref} id="manifesto" className="py-20 sm:py-32 bg-black text-white">
-      <div className="container mx-auto px-4 sm:px-6">
+      {/* Central container — tighter on desktop for contained feel */}
+      <div className="afro-manifesto-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
           <motion.div
@@ -67,6 +68,30 @@ export function Manifesto() {
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        .afro-manifesto-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        /* Desktop: use wider margins so content sits in tighter centred area */
+        @media (min-width: 1024px) {
+          .afro-manifesto-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 4rem;
+            padding-right: 4rem;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-manifesto-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }
