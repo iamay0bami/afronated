@@ -53,7 +53,7 @@ export function YouTubeCTA() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            
+            <a
               href="https://www.youtube.com/@Afronated"
               target="_blank"
               rel="noopener noreferrer"
@@ -72,7 +72,7 @@ export function YouTubeCTA() {
             </a>
           </motion.div>
 
-          {/* Stats removed — brand is growing, authenticity over vanity numbers */}
+          {/* Stats removed brand is growing, authenticity over vanity numbers */}
         </div>
       </div>
     </section>
