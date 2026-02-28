@@ -37,7 +37,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* Wordmark — text logo, click scrolls to top */}
+        {/* Wordmark text logo, click scrolls to top */}
         
           href="#"
           style={{
@@ -52,7 +52,7 @@ export function Navbar() {
           Afronated
         </a>
 
-        {/* Desktop nav — hidden on mobile (below md) */}
+        {/* Desktop nav hidden on mobile (below md) */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             
@@ -66,7 +66,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Hamburger — visible only on mobile (below md) */}
+        {/* Hamburger visible only on mobile (below md) */}
         <button
           className="md:hidden p-1.5 text-black"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -76,7 +76,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown — only renders on small screens */}
+      {/* Mobile dropdown only renders on small screens */}
       {menuOpen && (
         <motion.nav
           className="md:hidden bg-white border-t border-black/8 px-6 py-6 flex flex-col gap-5"
