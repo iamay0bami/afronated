@@ -10,7 +10,7 @@ export function Submissions() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    type: "",
+    intent: "",
     social: "",
     message: "",
   });
@@ -26,11 +26,11 @@ export function Submissions() {
     //   body: JSON.stringify(formData),
     // });
     // ─────────────────────────────────────────────
-    await new Promise((r) => setTimeout(r, 600)); // remove when live
+    await new Promise((r) => setTimeout(r, 600));
     toast.success("We got you! We'll be in touch soon.", {
       description: "Welcome to the collective.",
     });
-    setFormData({ name: "", email: "", type: "", social: "", message: "" });
+    setFormData({ name: "", email: "", intent: "", social: "", message: "" });
     setSubmitting(false);
   };
 
@@ -38,12 +38,13 @@ export function Submissions() {
     "w-full bg-transparent border-b-2 border-black/20 focus:border-[#EF4444] outline-none py-3 text-[14px] transition-colors placeholder:text-black/30";
 
   return (
-    <section ref={ref} id="submissions" className="py-32 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-12 gap-16">
+    <section ref={ref} id="submissions" className="py-16 sm:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
           {/* Left */}
           <motion.div
-            className="col-span-12 lg:col-span-5"
+            className="lg:col-span-5"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -63,13 +64,13 @@ export function Submissions() {
 
               <div className="space-y-6">
                 <p className="text-[14px] leading-relaxed text-black/70">
-                  Have a story to tell? Know a creative we should feature? Want to collaborate? We'd love to hear from you.
+                  Are you an artist or musician? Know someone we should feature? Want to collaborate? We'd love to hear from you.
                 </p>
                 <div className="space-y-4">
                   {[
-                    "Original music, videos, or creative projects",
-                    "Interview requests or collaboration ideas",
-                    "Event coverage or feature suggestions",
+                    "Submit your music or creative projects",
+                    "Request an interview or feature",
+                    "Collaboration ideas",
                     "Just want to be part of the community",
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3">
@@ -80,39 +81,30 @@ export function Submissions() {
                 </div>
               </div>
 
-              {/* Email list subscribe */}
-              <div className="pt-4 border-t border-black/10">
-                <p className="text-[11px] tracking-[0.15em] uppercase text-black/40 mb-4">
-                  Or just stay in the loop
-                </p>
-                <div className="flex gap-0">
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="flex-1 bg-transparent border border-black/20 px-4 py-3 text-[13px] focus:border-[#EF4444] outline-none transition-colors"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => toast.success("You're on the list!")}
-                    className="bg-black text-white px-6 py-3 text-[11px] tracking-[0.15em] uppercase hover:bg-[#EF4444] transition-colors"
+              <div className="pt-4">
+                <p className="text-[13px] text-black/50">
+                  Or email us directly at{" "}
+                  
+                    href="mailto:afronated@gmail.com"
+                    className="text-[#EF4444] hover:underline"
                   >
-                    Subscribe
-                  </button>
-                </div>
+                    afronated@gmail.com
+                  </a>
+                </p>
               </div>
             </div>
           </motion.div>
 
           {/* Right - Form */}
           <motion.div
-            className="col-span-12 lg:col-span-7"
+            className="lg:col-span-7"
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 sm:col-span-1 space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
                   <label className="text-[11px] tracking-[0.15em] uppercase text-black/50">
                     Name *
                   </label>
@@ -125,7 +117,7 @@ export function Submissions() {
                     placeholder="Your name"
                   />
                 </div>
-                <div className="col-span-2 sm:col-span-1 space-y-2">
+                <div className="space-y-2">
                   <label className="text-[11px] tracking-[0.15em] uppercase text-black/50">
                     Email *
                   </label>
@@ -140,25 +132,25 @@ export function Submissions() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 sm:col-span-1 space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
                   <label className="text-[11px] tracking-[0.15em] uppercase text-black/50">
-                    Creative Type *
+                    I want to... *
                   </label>
                   <select
                     required
-                    value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                    value={formData.intent}
+                    onChange={(e) => setFormData({ ...formData, intent: e.target.value })}
                     className={inputClass}
                   >
                     <option value="">Select...</option>
-                    <option value="musician">Submit my story</option>
-                    <option value="visual">Recommend someone to feature</option>
-                    <option value="filmmaker">Collaborate with Afro-Nated</option>
-                    <option value="writer">Something else</option>
+                    <option value="submit-story">Submit my story</option>
+                    <option value="recommend">Recommend someone to feature</option>
+                    <option value="collaborate">Collaborate with Afronated</option>
+                    <option value="other">Something else</option>
                   </select>
                 </div>
-                <div className="col-span-2 sm:col-span-1 space-y-2">
+                <div className="space-y-2">
                   <label className="text-[11px] tracking-[0.15em] uppercase text-black/50">
                     Social Handle
                   </label>
@@ -186,7 +178,7 @@ export function Submissions() {
                 />
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={submitting}

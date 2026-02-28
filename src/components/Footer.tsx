@@ -118,8 +118,8 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-white/30">
             <div>© {currentYear} Afronated. All rights reserved.</div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-[#EF4444] transition-colors">Privacy</a>
-              <a href="#" className="hover:text-[#EF4444] transition-colors">Terms</a>
+              <a href="/privacy" className="hover:text-[#EF4444] transition-colors">Privacy</a>
+              <a href="/terms" className="hover:text-[#EF4444] transition-colors">Terms</a>
             </div>
           </div>
         </motion.div>

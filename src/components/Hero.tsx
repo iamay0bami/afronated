@@ -3,12 +3,12 @@ import { motion } from "motion/react";
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
-      <div className="container mx-auto px-6 py-20">
-        <div className="grid grid-cols-12 gap-8 items-center">
+      <div className="container mx-auto px-4 sm:px-6 py-24 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-          {/* Left side - Typography */}
+          {/* Left side */}
           <motion.div
-            className="col-span-12 lg:col-span-7"
+            className="lg:col-span-7"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -25,23 +25,16 @@ export function Hero() {
                 </span>
               </motion.div>
 
-              {/* Logo-style wordmark — matches the warped bold oval logo */}
               <h1 className="leading-[0.88] tracking-tight" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                 <span
                   className="block text-black"
-                  style={{
-                    fontSize: "clamp(3.5rem, 13vw, 10rem)",
-                    letterSpacing: "-0.01em",
-                  }}
+                  style={{ fontSize: "clamp(3.5rem, 13vw, 10rem)", letterSpacing: "-0.01em" }}
                 >
                   Afro-
                 </span>
                 <span
                   className="block text-black relative"
-                  style={{
-                    fontSize: "clamp(3.5rem, 13vw, 10rem)",
-                    letterSpacing: "-0.01em",
-                  }}
+                  style={{ fontSize: "clamp(3.5rem, 13vw, 10rem)", letterSpacing: "-0.01em" }}
                 >
                   Nated
                   <motion.span
@@ -69,9 +62,9 @@ export function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="pt-8"
+                className="pt-4"
               >
-                <a
+                
                   href="#interviews"
                   className="group inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-black hover:text-[#EF4444] transition-colors"
                 >
@@ -82,9 +75,9 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right side - Image with red accent */}
+          {/* Right side image — hidden on mobile */}
           <motion.div
-            className="col-span-12 lg:col-span-5"
+            className="hidden lg:block lg:col-span-5"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -102,7 +95,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Red accent line */}
       <motion.div
         className="absolute bottom-0 left-0 h-[2px] bg-[#EF4444]"
         initial={{ width: 0 }}

@@ -12,43 +12,53 @@ export function Navbar() {
     return unsubscribe;
   }, [scrollY]);
 
+  useEffect(() => {
+    if (menuOpen) setMenuOpen(false);
+  }, [scrolled]);
+
   const navLinks = [
-    { label: "About", href: "#manifesto" },
-    { label: "Watch", href: "#interviews" },
-    { label: "Submit", href: "#submissions" },
-    { label: "Team", href: "#team" },
+    { label: "About",   href: "#manifesto" },
+    { label: "Watch",   href: "#interviews" },
+    { label: "Submit",  href: "#submissions" },
+    { label: "Team",    href: "#team" },
     { label: "Partner", href: "#partnerships" },
   ];
 
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm border-b border-black/8" : "bg-transparent"
+        scrolled
+          ? "bg-white/96 backdrop-blur-sm border-b border-black/8 shadow-sm"
+          : "bg-transparent"
       }`}
-      initial={{ y: -60, opacity: 0 }}
+      initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* Wordmark logo */}
-        <a
+        {/* Wordmark — text logo, click scrolls to top */}
+        
           href="#"
-          className={`transition-colors duration-300`}
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.6rem", letterSpacing: "0.02em", lineHeight: 1 }}
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: "1.75rem",
+            letterSpacing: "0.04em",
+            lineHeight: 1,
+            color: "#000",
+            textDecoration: "none",
+          }}
         >
-          <span className={scrolled ? "text-black" : "text-black"}>
-            Afro-Nated
-          </span>
+          Afronated
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop nav — hidden on mobile (below md) */}
+        <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a
+            
               key={link.label}
               href={link.href}
-              className="relative text-[10px] tracking-[0.2em] uppercase text-black/60 hover:text-black transition-colors group"
+              className="relative text-[10px] tracking-[0.25em] uppercase text-black/55 hover:text-black transition-colors duration-200 group"
             >
               {link.label}
               <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-[#EF4444] group-hover:w-full transition-all duration-300" />
@@ -56,9 +66,9 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Hamburger — visible only on mobile (below md) */}
         <button
-          className="md:hidden p-1 text-black"
+          className="md:hidden p-1.5 text-black"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -66,25 +76,25 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown — only renders on small screens */}
       {menuOpen && (
-        <motion.div
-          className="md:hidden bg-white border-t border-black/10 px-6 py-8 flex flex-col gap-5"
-          initial={{ opacity: 0, y: -8 }}
+        <motion.nav
+          className="md:hidden bg-white border-t border-black/8 px-6 py-6 flex flex-col gap-5"
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.18 }}
         >
           {navLinks.map((link) => (
-            <a
+            
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-[12px] tracking-[0.2em] uppercase text-black/70 hover:text-[#EF4444] transition-colors"
+              className="text-[13px] tracking-[0.2em] uppercase text-black/70 hover:text-[#EF4444] transition-colors"
             >
               {link.label}
             </a>
           ))}
-        </motion.div>
+        </motion.nav>
       )}
     </motion.header>
   );

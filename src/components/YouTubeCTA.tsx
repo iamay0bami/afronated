@@ -9,7 +9,6 @@ export function YouTubeCTA() {
 
   return (
     <section ref={ref} className="py-40 bg-black text-white relative overflow-hidden">
-      {/* Background accent */}
       <motion.div
         className="absolute top-1/2 left-0 w-64 h-64 bg-[#EF4444] opacity-5 blur-3xl"
         initial={{ scale: 0 }}
@@ -54,7 +53,7 @@ export function YouTubeCTA() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <a
+            
               href="https://www.youtube.com/@Afronated"
               target="_blank"
               rel="noopener noreferrer"
@@ -73,31 +72,7 @@ export function YouTubeCTA() {
             </a>
           </motion.div>
 
-          <motion.div
-            className="pt-12 flex justify-center gap-12 flex-wrap"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.7, duration: 0.8 }}
-          >
-            <div className="text-center">
-              <div className="text-[32px] mb-2">50K+</div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40">
-                Subscribers
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-[32px] mb-2">200+</div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40">
-                Videos
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-[32px] mb-2">1M+</div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40">
-                Views
-              </div>
-            </div>
-          </motion.div>
+          {/* Stats removed — brand is growing, authenticity over vanity numbers */}
         </div>
       </div>
     </section>
