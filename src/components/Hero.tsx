@@ -64,7 +64,7 @@ export function Hero() {
                 transition={{ delay: 0.6 }}
                 className="pt-4"
               >
-                
+                <a
                   href="#interviews"
                   className="group inline-flex items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-black hover:text-[#EF4444] transition-colors"
                 >

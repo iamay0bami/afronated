@@ -84,7 +84,7 @@ export function Submissions() {
               <div className="pt-4">
                 <p className="text-[13px] text-black/50">
                   Or email us directly at{" "}
-                  
+                  <a
                     href="mailto:afronated@gmail.com"
                     className="text-[#EF4444] hover:underline"
                   >

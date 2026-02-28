@@ -38,7 +38,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Wordmark text logo, click scrolls to top */}
-        
+        <a
           href="#"
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
@@ -55,7 +55,7 @@ export function Navbar() {
         {/* Desktop nav hidden on mobile (below md) */}
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            
+            <a
               key={link.label}
               href={link.href}
               className="relative text-[10px] tracking-[0.25em] uppercase text-black/55 hover:text-black transition-colors duration-200 group"
@@ -85,7 +85,7 @@ export function Navbar() {
           transition={{ duration: 0.18 }}
         >
           {navLinks.map((link) => (
-            
+            <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}

@@ -74,7 +74,7 @@ export function Interviews() {
             >
               {/* Thumbnail — click opens YouTube */}
               <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                
+                <a
                   href={interview.watchUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -112,7 +112,7 @@ export function Interviews() {
                   <p className="text-[13px] leading-relaxed text-black/60">
                     {interview.description}
                   </p>
-                  
+                  <a
                     href={interview.watchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
