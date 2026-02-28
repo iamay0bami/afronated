@@ -39,7 +39,8 @@ export function Submissions() {
 
   return (
     <section ref={ref} id="submissions" className="py-16 sm:py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
+      {/* Consistent content container — same max-width as Hero & Manifesto */}
+      <div className="afro-submissions-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
           {/* Left */}
@@ -199,6 +200,29 @@ export function Submissions() {
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        .afro-submissions-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-submissions-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .afro-submissions-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }

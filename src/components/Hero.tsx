@@ -3,11 +3,10 @@ import { motion } from "motion/react";
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
-      {/* Central container — max 1200px, full-width on mobile */}
       <div className="afro-container" style={{ paddingTop: "6rem", paddingBottom: "5rem" }}>
         <div className="afro-hero-grid">
 
-          {/* Left — text content */}
+          {/* Text content */}
           <motion.div
             className="afro-hero-text"
             initial={{ opacity: 0, y: 40 }}
@@ -76,15 +75,14 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right — image, hidden on mobile */}
+          {/* Desktop image — shown side-by-side on 1024px+ */}
           <motion.div
-            className="afro-hero-image-wrap"
+            className="afro-hero-image-desktop"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="relative">
-              {/* Red offset border */}
               <div
                 style={{
                   position: "absolute",
@@ -105,6 +103,21 @@ export function Hero() {
             </div>
           </motion.div>
 
+          {/* Mobile image — stacks below text on small screens */}
+          <motion.div
+            className="afro-hero-image-mobile"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1764069415077-a5af441778d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMGN1bHR1cmUlMjB1cmJhbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2OTUyODExMHww&ixlib=rb-4.1.0&q=80&w=1080"
+              alt="Youth culture"
+              className="w-full object-cover grayscale"
+              style={{ height: "300px", objectPosition: "center top" }}
+            />
+          </motion.div>
+
         </div>
       </div>
 
@@ -116,29 +129,45 @@ export function Hero() {
       />
 
       <style>{`
-        /* ── Shared content container ── */
         .afro-container {
           width: 100%;
           padding-left: 1rem;
           padding-right: 1rem;
         }
 
-        /* ── Hero grid: stacked on mobile, side-by-side on desktop ── */
+        /* Mobile: flex column, centered text, image below */
         .afro-hero-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          align-items: center;
+          display: flex;
+          flex-direction: column;
+          gap: 2.5rem;
+          align-items: stretch;
         }
         .afro-hero-text {
-          /* full width on mobile */
+          text-align: center;
         }
-        /* Image hidden on mobile */
-        .afro-hero-image-wrap {
+        .afro-hero-image-desktop {
           display: none;
         }
+        .afro-hero-image-mobile {
+          display: block;
+          width: 100%;
+        }
 
-        /* ── Desktop (1024px+): max-width container + side-by-side layout ── */
+        /* Tablet 768–1023px: text left-aligned, mobile image still shows */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+          .afro-hero-text {
+            text-align: left;
+          }
+          .afro-hero-image-mobile {
+            height: 380px;
+          }
+        }
+
+        /* Desktop 1024px+: side-by-side grid */
         @media (min-width: 1024px) {
           .afro-container {
             max-width: 1200px;
@@ -148,19 +177,19 @@ export function Hero() {
             padding-right: 1.5rem;
           }
           .afro-hero-grid {
+            display: grid;
             grid-template-columns: 7fr 5fr;
             gap: 3rem;
+            align-items: center;
           }
-          .afro-hero-image-wrap {
+          .afro-hero-text {
+            text-align: left;
+          }
+          .afro-hero-image-desktop {
             display: block;
           }
-        }
-
-        /* Tablet (768px): slightly wider padding, still single column */
-        @media (min-width: 768px) and (max-width: 1023px) {
-          .afro-container {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+          .afro-hero-image-mobile {
+            display: none;
           }
         }
       `}</style>

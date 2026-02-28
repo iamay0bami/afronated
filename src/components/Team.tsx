@@ -42,8 +42,9 @@ export function Team() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-32 bg-black text-white">
-      <div className="container mx-auto px-6">
+    <section ref={ref} id="team" className="py-32 bg-black text-white">
+      {/* Consistent content container — same max-width as all other sections */}
+      <div className="afro-team-container">
         {/* Header */}
         <motion.div
           className="mb-20 max-w-3xl"
@@ -67,9 +68,9 @@ export function Team() {
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20">
           {team.map((member, index) => (
-            <TeamMember 
-              key={member.id} 
-              member={member} 
+            <TeamMember
+              key={member.id}
+              member={member}
               index={index}
               isInView={isInView}
             />
@@ -95,6 +96,29 @@ export function Team() {
           </a>
         </motion.div>
       </div>
+
+      <style>{`
+        .afro-team-container {
+          width: 100%;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .afro-team-container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+        @media (min-width: 1024px) {
+          .afro-team-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+      `}</style>
     </section>
   );
 }
@@ -113,7 +137,6 @@ function TeamMember({ member, index, isInView }: { member: typeof team[0], index
     >
       <div className="relative mb-6 overflow-hidden">
         <div className="aspect-[3/4] relative">
-          {/* Default Image */}
           <img
             src={member.image}
             alt={member.name}
@@ -121,7 +144,6 @@ function TeamMember({ member, index, isInView }: { member: typeof team[0], index
               isHovered ? 'opacity-0' : 'opacity-100'
             }`}
           />
-          {/* Hover Image */}
           <img
             src={member.hoverImage}
             alt={`${member.name} alternate pose`}
@@ -129,7 +151,6 @@ function TeamMember({ member, index, isInView }: { member: typeof team[0], index
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
           />
-          {/* Red accent border on hover */}
           <div className="absolute bottom-0 right-0 w-16 h-16 border-t-2 border-l-2 border-[#EF4444] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       </div>

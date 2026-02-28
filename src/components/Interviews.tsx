@@ -36,9 +36,9 @@ export function Interviews() {
 
   return (
     <section id="interviews" ref={ref} className="py-20 sm:py-32 bg-white">
-      {/* Central container */}
       <div className="afro-interviews-container">
 
+        {/* Section header */}
         <motion.div
           className="mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 20 }}
@@ -64,70 +64,77 @@ export function Interviews() {
           </div>
         </motion.div>
 
-        <div className="space-y-16 sm:space-y-24">
-          {interviews.map((interview, index) => (
-            <motion.div
-              key={interview.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-            >
-              {/* Thumbnail */}
-              <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <a
-                  href={interview.watchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-video bg-black overflow-hidden"
-                  aria-label={`Watch ${interview.title} on YouTube`}
-                >
-                  <img
-                    src={`https://img.youtube.com/vi/${interview.videoId}/maxresdefault.jpg`}
-                    alt={interview.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        `https://img.youtube.com/vi/${interview.videoId}/hqdefault.jpg`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-[#EF4444] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Youtube className="w-7 h-7 text-white ml-1" />
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 border-2 border-[#EF4444] opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-              </div>
+        {/* Interview list */}
+        <div className="afro-interviews-list">
+          {interviews.map((interview, index) => {
+            // On desktop: even index (0,2) → image left, text right
+            //             odd index (1) → image right, text left (zig-zag)
+            const isReversed = index % 2 === 1;
 
-              {/* Info */}
-              <div className={`lg:col-span-5 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                <div className="space-y-4">
-                  <div className="text-[11px] tracking-[0.2em] uppercase text-[#EF4444]">
-                    {interview.guest}
-                  </div>
-                  <h3 className="text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.1] tracking-tight text-black">
-                    {interview.title}
-                  </h3>
-                  <p className="text-[13px] leading-relaxed text-black/60">
-                    {interview.description}
-                  </p>
+            return (
+              <motion.div
+                key={interview.id}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                className={`afro-interview-row ${isReversed ? "afro-interview-row--reversed" : ""}`}
+              >
+                {/* Thumbnail */}
+                <div className="afro-interview-thumb">
                   <a
                     href={interview.watchUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-black hover:text-[#EF4444] transition-colors group pt-4"
+                    className="group relative block aspect-video bg-black overflow-hidden"
+                    aria-label={`Watch ${interview.title} on YouTube`}
                   >
-                    Watch on YouTube
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    <img
+                      src={`https://img.youtube.com/vi/${interview.videoId}/maxresdefault.jpg`}
+                      alt={interview.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          `https://img.youtube.com/vi/${interview.videoId}/hqdefault.jpg`;
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-[#EF4444] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <Youtube className="w-7 h-7 text-white ml-1" />
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 border-2 border-[#EF4444] opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Info */}
+                <div className="afro-interview-info">
+                  <div className="space-y-4">
+                    <div className="text-[11px] tracking-[0.2em] uppercase text-[#EF4444]">
+                      {interview.guest}
+                    </div>
+                    <h3 className="text-[clamp(1.5rem,4vw,2.5rem)] leading-[1.1] tracking-tight text-black">
+                      {interview.title}
+                    </h3>
+                    <p className="text-[13px] leading-relaxed text-black/60">
+                      {interview.description}
+                    </p>
+                    <a
+                      href={interview.watchUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-black hover:text-[#EF4444] transition-colors group pt-4"
+                    >
+                      Watch on YouTube
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
@@ -144,6 +151,7 @@ export function Interviews() {
           padding-left: 1rem;
           padding-right: 1rem;
         }
+
         @media (min-width: 1024px) {
           .afro-interviews-container {
             max-width: 1200px;
@@ -153,10 +161,62 @@ export function Interviews() {
             padding-right: 1.5rem;
           }
         }
+
         @media (min-width: 768px) and (max-width: 1023px) {
           .afro-interviews-container {
             padding-left: 1.5rem;
             padding-right: 1.5rem;
+          }
+        }
+
+        /* ── Interview list ── */
+        .afro-interviews-list {
+          display: flex;
+          flex-direction: column;
+          gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+          .afro-interviews-list {
+            gap: 6rem;
+          }
+        }
+
+        /* ── Each row: stacked on mobile ── */
+        .afro-interview-row {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .afro-interview-thumb {
+          width: 100%;
+        }
+
+        .afro-interview-info {
+          width: 100%;
+        }
+
+        /* ── Desktop: side-by-side zig-zag ── */
+        @media (min-width: 1024px) {
+          .afro-interview-row {
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            gap: 4rem;
+            align-items: center;
+          }
+
+          /* Reversed row: swap order — image goes right, text goes left */
+          .afro-interview-row--reversed {
+            grid-template-columns: 5fr 7fr;
+          }
+
+          .afro-interview-row--reversed .afro-interview-thumb {
+            order: 2;
+          }
+
+          .afro-interview-row--reversed .afro-interview-info {
+            order: 1;
           }
         }
       `}</style>

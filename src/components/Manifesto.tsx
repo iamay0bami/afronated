@@ -8,7 +8,6 @@ export function Manifesto() {
 
   return (
     <section ref={ref} id="manifesto" className="py-20 sm:py-32 bg-black text-white">
-      {/* Central container — tighter on desktop for contained feel */}
       <div className="afro-manifesto-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
 
@@ -35,24 +34,30 @@ export function Manifesto() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="space-y-10 sm:space-y-12">
-              <p className="text-[clamp(1.4rem,4vw,3rem)] leading-[1.3] tracking-tight">
+            {/* Increased spacing throughout for that airy Figma feel */}
+            <div className="afro-manifesto-content">
+              <p
+                className="afro-manifesto-headline"
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              >
                 We exist at the intersection of culture, creativity,
                 and community.
               </p>
-              <div className="space-y-6 max-w-2xl">
-                <p className="text-[14px] leading-relaxed text-white/70">
+
+              <div className="afro-manifesto-body">
+                <p className="afro-manifesto-paragraph">
                   Afronated is more than content — it's a movement. We create space
                   for emerging voices to tell their stories, share their craft, and
                   connect with a global audience that values authenticity.
                 </p>
-                <p className="text-[14px] leading-relaxed text-white/70">
+                <p className="afro-manifesto-paragraph">
                   From interviews with rising artists to deep dives into music
                   culture, our platform celebrates the unfiltered, the bold,
                   and the unapologetically real.
                 </p>
               </div>
-              <div className="pt-4 flex flex-wrap gap-8 sm:gap-12">
+
+              <div className="afro-manifesto-stats">
                 {[
                   { label: "Founded", value: "2023" },
                   { label: "Platform", value: "YouTube" },
@@ -75,7 +80,7 @@ export function Manifesto() {
           padding-left: 1rem;
           padding-right: 1rem;
         }
-        /* Desktop: use wider margins so content sits in tighter centred area */
+
         @media (min-width: 1024px) {
           .afro-manifesto-container {
             max-width: 1200px;
@@ -85,10 +90,68 @@ export function Manifesto() {
             padding-right: 4rem;
           }
         }
+
         @media (min-width: 768px) and (max-width: 1023px) {
           .afro-manifesto-container {
             padding-left: 1.5rem;
             padding-right: 1.5rem;
+          }
+        }
+
+        /* Content spacing — tighter on mobile, airy on desktop */
+        .afro-manifesto-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .afro-manifesto-headline {
+          font-size: clamp(1.6rem, 4vw, 3rem);
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          color: #fff;
+          margin-bottom: 0;
+        }
+
+        .afro-manifesto-body {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          max-width: 42rem;
+        }
+
+        .afro-manifesto-paragraph {
+          font-size: 14px;
+          line-height: 1.8;
+          color: rgba(255,255,255,0.7);
+        }
+
+        .afro-manifesto-stats {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+          padding-top: 1rem;
+          border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Desktop: increase all spacing significantly */
+        @media (min-width: 1024px) {
+          .afro-manifesto-content {
+            gap: 3rem;
+          }
+          .afro-manifesto-headline {
+            line-height: 1.25;
+          }
+          .afro-manifesto-body {
+            gap: 2rem;
+          }
+          .afro-manifesto-paragraph {
+            font-size: 15px;
+            line-height: 1.9;
+          }
+          .afro-manifesto-stats {
+            gap: 3rem;
+            padding-top: 2rem;
           }
         }
       `}</style>
