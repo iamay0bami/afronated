@@ -28,10 +28,10 @@ export function Navbar() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 left-0 right-0 z-[1000] transition-all duration-300 bg-white/95 backdrop-blur-[8px] ${
         scrolled
-          ? "bg-white/96 backdrop-blur-sm border-b border-black/8 shadow-sm"
-          : "bg-transparent"
+          ? "border-b border-black/10 shadow-sm"
+          : "border-b border-transparent"
       }`}
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
