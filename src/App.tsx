@@ -1,5 +1,5 @@
-import { Toaster } from "sonner";
-import { Navbar } from "./components/Navbar";
+import { Toaster } from "sonner@2.0.3";
+import { Navbar, NavbarSpacer } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Manifesto } from "./components/Manifesto";
 import { Interviews } from "./components/Interviews";
@@ -12,26 +12,37 @@ import { Footer } from "./components/Footer";
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
+      {/* Smooth scroll behavior */}
       <style>{`
-        html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #EF4444; }
-        ::-webkit-scrollbar-thumb:hover { background: #DC2626; }
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #000;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #EF4444;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #DC2626;
+        }
       `}</style>
 
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: "#0A0A0A",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "#fff",
-          },
-        }}
-      />
+      <Toaster position="bottom-right" />
 
+      {/* Fixed navbar sits above everything */}
       <Navbar />
+      {/* Spacer pushes page content below the 4rem fixed navbar */}
+      <NavbarSpacer />
+
       <Hero />
       <Manifesto />
       <Interviews />
