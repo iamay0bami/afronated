@@ -32,15 +32,20 @@ export function Navbar() {
   ];
 
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 bg-white/95 backdrop-blur-[8px] ${
-        scrolled
-          ? "border-b border-black/10 shadow-sm"
-          : "border-b border-transparent"
-      }`}
-      initial={{ y: -64, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 9999,
+        backgroundColor: scrolled ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.95)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid transparent",
+        boxShadow: scrolled ? "0 1px 8px rgba(0,0,0,0.06)" : "none",
+        transition: "background-color 0.3s, box-shadow 0.3s, border-color 0.3s",
+      }}
     >
       <div className="afro-navbar-inner">
         <a href="#" className="afro-logo-link" aria-label="Afronated — Home">
@@ -169,6 +174,6 @@ export function Navbar() {
           .afro-mobile-nav  { display: none !important; }
         }
       `}</style>
-    </motion.header>
+    </header>
   );
 }

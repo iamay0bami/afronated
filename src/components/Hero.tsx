@@ -4,7 +4,7 @@ const LOGO_BLACK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAA
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white" style={{ isolation: "isolate" }}>
       <div className="afro-container" style={{ paddingTop: "6rem", paddingBottom: "5rem" }}>
         <div className="afro-hero-grid">
 
