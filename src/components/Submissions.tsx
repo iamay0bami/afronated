@@ -20,11 +20,11 @@ export function Submissions() {
     e.preventDefault();
     setSubmitting(true);
     // ─── CONNECT FORMSPREE: replace YOUR_FORM_ID ───
-    // const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(formData),
-    // });
+    const res = await fetch("https://formspree.io/f/xgolgjej", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
     // ─────────────────────────────────────────────
     await new Promise((r) => setTimeout(r, 600));
     toast.success("We got you! We'll be in touch soon.", {
