@@ -19,8 +19,8 @@ export function Partnerships() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // ─── CONNECT FORMSPREE: uncomment & replace YOUR_FORM_ID mykdrqzl ───
-    const res = await fetch("https://formspree.io/f/xaqdgekk", {
+    // ─── CONNECT FORMSPREE: uncomment & replace YOUR_FORM_ID ───
+    const res = await fetch("https://formspree.io/f/mykdrqzl", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
