@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner@2.0.3";
 import { Navbar, NavbarSpacer } from "./components/Navbar";
 import { Hero } from "./components/Hero";
@@ -51,6 +52,7 @@ export default function App() {
       <Team />
       <Partnerships />
       <Footer />
+      <Analytics />
     </div>
   );
 }
